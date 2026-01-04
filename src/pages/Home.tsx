@@ -97,7 +97,7 @@ const Home = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-5xl md:text-[80px] font-semibold text-black mb-5 leading-[1.05] tracking-tight">
-              Automated discounts.
+              Automated discounts..
               <br />
               <span className="text-gray-600">Made effortless.</span>
             </h1>
