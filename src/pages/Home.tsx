@@ -793,7 +793,7 @@ const Home = () => {
           </motion.div>
 
           {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
             {plans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -801,25 +801,19 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className={`relative bg-white rounded-2xl p-8 transition-all duration-300 ${
+                className={`relative bg-white rounded-[28px] p-8 transition-all duration-300 ${
                   plan.highlighted
-                    ? "ring-2 ring-primary-600 shadow-2xl shadow-primary-500/20 scale-105 z-10"
-                    : "border border-gray-200 shadow-lg hover:shadow-xl hover:border-primary-200"
+                    ? "ring-2 ring-black shadow-xl scale-[1.02] z-10"
+                    : "border border-gray-100/50 shadow-sm hover:shadow-lg"
                 }`}
               >
                 {plan.highlighted && (
                   <>
                     <div className="absolute inset-0 bg-gradient-to-br from-primary-50/50 to-purple-50/50 rounded-2xl -z-10"></div>
-                    <div className="bg-gradient-to-r from-primary-600 to-purple-600 text-white text-sm font-bold px-4 py-2 rounded-full inline-block mb-5 shadow-lg">
-                      ⭐ Most Popular
+                    <div className="bg-black text-white text-sm font-bold px-4 py-2 rounded-full inline-block mb-5 shadow-lg">
+                      ⭐ Recommended
                     </div>
                   </>
-                )}
-                {!plan.highlighted && plan.name === "Pro" && (
-                  <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-bold px-4 py-2 rounded-full inline-block mb-5">
-                    🚀 Best Value
-                  </div>
                 )}
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   {plan.name}
@@ -878,6 +872,27 @@ const Home = () => {
                 </a>
               </motion.div>
             ))}
+          </div>
+
+          {/* Link to full pricing page */}
+          <div className="text-center">
+            <Link
+              to="/pricing"
+              className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-lg transition-colors"
+            >
+              View complete pricing details
+              <svg
+                className="w-5 h-5 ml-2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
