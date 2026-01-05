@@ -1,12 +1,25 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Home = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
     "monthly"
   );
   const [showToast, setShowToast] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  // Show modal when component mounts
+  useEffect(() => {
+    const hasSeenModal = sessionStorage.getItem("hasSeenPromoModal");
+    if (!hasSeenModal) {
+      const timer = setTimeout(() => {
+        setShowModal(true);
+        sessionStorage.setItem("hasSeenPromoModal", "true");
+      }, 1000); // Show after 1 second
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const plans = [
     {
@@ -72,6 +85,102 @@ const Home = () => {
 
   return (
     <div>
+      {/* Promotional Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden"
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-10"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Modal content */}
+            <div className="relative">
+              {/* Background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-600"></div>
+              
+              {/* Content */}
+              <div className="relative p-8 text-center text-white">
+                <div className="mb-4">
+                  <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold">
+                    🎉 Limited Time Offer
+                  </span>
+                </div>
+                
+                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                  Get 3 Months Free!
+                </h2>
+                
+                <p className="text-xl mb-8 text-white/90">
+                  Start your journey with MyCampaigner today and enjoy 3 months of premium features absolutely free.
+                </p>
+
+                <div className="space-y-4">
+                  <a
+                    href="https://apps.shopify.com"
+                    className="block w-full py-4 px-6 bg-white text-primary-600 font-bold rounded-full hover:bg-gray-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Claim Your Free Months
+                  </a>
+                  
+                  <button
+                    onClick={() => setShowModal(false)}
+                    className="block w-full py-3 px-6 text-white/80 hover:text-white font-semibold transition-colors"
+                  >
+                    Maybe later
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Features list */}
+            <div className="bg-gray-50 p-6">
+              <h3 className="font-semibold text-gray-900 mb-3 text-center">What's included:</h3>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M5 13l4 4L19 7" />
+                  </svg>
+                  Unlimited campaigns & variants
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M5 13l4 4L19 7" />
+                  </svg>
+                  All discount types & conditions
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M5 13l4 4L19 7" />
+                  </svg>
+                  Priority support & analytics
+                </li>
+              </ul>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-50 to-white py-20 md:py-32 overflow-hidden">
         {/* Background Pattern */}
