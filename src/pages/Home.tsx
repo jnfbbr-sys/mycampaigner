@@ -878,7 +878,7 @@ const Home = () => {
           <div className="text-center">
             <Link
               to="/pricing"
-              className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-lg transition-colors"
+              className="inline-flex items-center px-8 py-4 bg-gray-900 text-white font-semibold text-lg rounded-full hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               View complete pricing details
               <svg
