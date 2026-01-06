@@ -1,6 +1,7 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import SEO from "../components/SEO";
 
 // Import MDX posts
 import GettingStarted from "../content/blog/getting-started-with-automated-discounts.mdx";
@@ -81,6 +82,14 @@ const BlogPost = () => {
 
   return (
     <div className="py-20">
+      <SEO
+        title={meta.title}
+        description={meta.excerpt}
+        canonical={`/blog/${slug}`}
+        ogImage={meta.image}
+        ogType="article"
+        keywords={meta.tags.join(", ")}
+      />
       <article className="section-container max-w-4xl mx-auto">
         {/* Back to Blog */}
         <Link

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import SEO from "../components/SEO";
 
 const Home = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
@@ -85,6 +86,12 @@ const Home = () => {
 
   return (
     <div>
+      <SEO
+        title="MyCampaigner - Automated Discount Campaigns for Shopify"
+        description="Create sophisticated discount campaigns that apply automatically at checkout using Shopify Functions. No code required. Available for all Shopify plans."
+        canonical="/"
+        keywords="shopify discounts, automated discounts, shopify functions, discount automation, dynamic pricing, shopify app"
+      />
       {/* Promotional Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
@@ -849,6 +856,7 @@ const Home = () => {
                     </p>
                   </div>
                 </motion.div>
+
               ))}
             </div>
           </motion.div>

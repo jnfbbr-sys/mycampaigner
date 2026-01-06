@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 interface BlogPost {
   slug: string;
@@ -51,6 +52,12 @@ const Blog = () => {
 
   return (
     <div className="py-20">
+      <SEO
+        title="Blog - Discount Strategies & Shopify Tips"
+        description="Expert tips, strategies, and insights on automated discounts, Shopify Functions, and boosting your e-commerce sales."
+        canonical="/blog"
+        keywords="shopify blog, discount strategies, e-commerce tips, shopify functions, pricing strategies"
+      />
       <div className="section-container">
         {/* Header */}
         <motion.div

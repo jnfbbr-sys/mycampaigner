@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import SEO from "../components/SEO";
 
 const Pricing = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
@@ -43,6 +44,12 @@ const Pricing = () => {
 
   return (
     <div className="py-20">
+      <SEO
+        title="Pricing - Simple & Transparent Plans"
+        description="Choose the perfect plan for your Shopify store. Free tier available. 7-day free trial on all paid plans. No credit card required."
+        canonical="/pricing"
+        keywords="shopify app pricing, discount app cost, shopify functions pricing, free shopify discount app"
+      />
       <div className="section-container">
         {/* Header */}
         <motion.div

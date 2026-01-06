@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 const Features = () => {
   const features = [
@@ -81,6 +82,12 @@ const Features = () => {
 
   return (
     <div className="py-20">
+      <SEO
+        title="Features - Powerful Discount Automation"
+        description="Inventory-based discounts, metafield conditions, customer segmentation, and more. All powered by Shopify Functions for maximum performance."
+        canonical="/features"
+        keywords="shopify features, discount rules, inventory discounts, customer segmentation, metafield targeting"
+      />
       <div className="section-container">
         {/* Header */}
         <motion.div

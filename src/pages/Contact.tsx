@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import SEO from "../components/SEO";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -85,6 +86,12 @@ const Contact = () => {
 
   return (
     <div className="py-20 bg-gradient-to-br from-gray-50 to-white min-h-screen">
+      <SEO
+        title="Contact Us - Get in Touch"
+        description="Have questions about MyCampaigner? Get in touch with our team. We're here to help you succeed with automated discount campaigns."
+        canonical="/contact"
+        keywords="contact, support, help, shopify app support, discount app help"
+      />
       <div className="section-container">
         {/* Header */}
         <motion.div
