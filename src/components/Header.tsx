@@ -34,6 +34,12 @@ const Header = () => {
               Pricing
             </Link>
             <Link
+              to="/blog"
+              className="text-[14px] font-semibold text-gray-800 hover:text-black transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
               to="/contact"
               className="text-[14px] font-semibold text-gray-800 hover:text-black transition-colors"
             >
@@ -100,6 +106,13 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               Pricing
+            </Link>
+            <Link
+              to="/blog"
+              className="block text-gray-700 hover:text-primary-600"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Blog
             </Link>
             <Link
               to="/contact"
