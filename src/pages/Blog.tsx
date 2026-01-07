@@ -50,6 +50,27 @@ const Blog = () => {
     },
   ];
 
+  // Structured data for blog listing
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "MyCampaigner Blog",
+    description: "Expert tips, strategies, and insights on automated discounts, Shopify Functions, and boosting your e-commerce sales.",
+    url: "https://mycampaigner.com/blog",
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      image: post.image,
+      datePublished: post.date,
+      author: {
+        "@type": "Organization",
+        name: post.author,
+      },
+      url: `https://mycampaigner.com/blog/${post.slug}`,
+    })),
+  };
+
   return (
     <div className="py-20">
       <SEO
@@ -58,6 +79,9 @@ const Blog = () => {
         canonical="/blog"
         keywords="shopify blog, discount strategies, e-commerce tips, shopify functions, pricing strategies"
       />
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
       <div className="section-container">
         {/* Header */}
         <motion.div

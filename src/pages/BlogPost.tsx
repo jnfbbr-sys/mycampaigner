@@ -80,6 +80,34 @@ const BlogPost = () => {
 
   const { component: PostContent, meta } = posts[slug];
 
+  // Structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: meta.title,
+    description: meta.excerpt,
+    image: meta.image,
+    datePublished: meta.date,
+    dateModified: meta.date,
+    author: {
+      "@type": "Organization",
+      name: meta.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "MyCampaigner",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://mycampaigner.com/vite.svg",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://mycampaigner.com/blog/${slug}`,
+    },
+    keywords: meta.tags.join(", "),
+  };
+
   return (
     <div className="py-20">
       <SEO
@@ -90,6 +118,9 @@ const BlogPost = () => {
         ogType="article"
         keywords={meta.tags.join(", ")}
       />
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
       <article className="section-container max-w-4xl mx-auto">
         {/* Back to Blog */}
         <Link
