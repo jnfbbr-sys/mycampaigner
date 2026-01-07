@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import SEO from "../components/SEO";
+import LazyYouTube from "../components/LazyYouTube";
 
 const Home = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
@@ -17,7 +18,7 @@ const Home = () => {
       const timer = setTimeout(() => {
         setShowModal(true);
         sessionStorage.setItem("hasSeenPromoModal", "true");
-      }, 1000); // Show after 1 second
+      }, 2000); // Show after 2 seconds to avoid blocking initial render
       return () => clearTimeout(timer);
     }
   }, []);
@@ -503,19 +504,11 @@ const Home = () => {
             transition={{ delay: 0.2 }}
             className="max-w-5xl mx-auto mb-20"
           >
-            <div className="relative rounded-[28px] overflow-hidden shadow-2xl bg-black">
-              <div className="aspect-video">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/leFLHZOb-tE"
-                  title="MyCampaigner Demo"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full"
-                ></iframe>
-              </div>
+            <div className="relative rounded-[28px] overflow-hidden shadow-2xl">
+              <LazyYouTube
+                videoId="leFLHZOb-tE"
+                title="MyCampaigner Demo"
+              />
             </div>
           </motion.div>
 
